@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:14:17 by amouflet          #+#    #+#             */
-/*   Updated: 2023/02/02 14:34:38 by amouflet         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:06:26 by amouflet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 # endif /*CASE_HEIGHT*/
 
 # ifndef W_HEIGHT
-#  define W_HEIGHT 30
+#  define W_HEIGHT 25
 # endif /*W_HEIGHT*/
 
 # ifndef W_WIDTH
-#  define W_WIDTH 40
+#  define W_WIDTH 48
 # endif /*W_WIDTH*/
 
 # include <stdbool.h>
