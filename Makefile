@@ -148,10 +148,10 @@ mlibmlx:
 	@make -C minilibx-linux/
 
 $(NAME):	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_M) $(LIBFT_A) $(LIB_MLX)
-	$(CC) $(OBJ) $(OBJ_M) -o $(NAME) $(L) -L./minilibx-linux/ $(LMLX) -L./libft/ $(LFT)
+	$(CC) $(OBJ) $(OBJ_M) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
 bonus:	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_B) $(LIBFT_A) $(LIB_MLX)
-	$(CC) $(OBJ) $(OBJ_B) -o $(NAME) $(L) -L./minilibx-linux/ $(LMLX) -L./libft/ $(LFT)
+	$(CC) $(OBJ) $(OBJ_B) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
 clean:
 	@make clean -C minilibx-linux/

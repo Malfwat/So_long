@@ -66,12 +66,10 @@ int	print_move2(t_data *data)
 {
 	int	test[2];
 	int	i;
-	int	x;
 
 	get_to_print(data->tab, data);
 	get_player_pos(data->to_print, test, 'P');
 	i = 5;
-	x = 0;
 	while (--i > 0)
 	{
 		draw(data->to_print, data, data->xy);
