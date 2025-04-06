@@ -56,7 +56,7 @@ int	print_move1(t_data *data)
 		mlx_put_image_to_window \
 		(data->mlx, data->mlx->win_list, data->move[i]->img, \
 		CASE_WIDTH * (test[0]), CASE_HEIGHT * test[1]);
-		usleep(4000);
+		usleep(8000);
 		i++;
 	}
 	return (0);
@@ -76,18 +76,23 @@ int	print_move2(t_data *data)
 		mlx_put_image_to_window \
 		(data->mlx, data->mlx->win_list, data->move[i]->img, \
 		CASE_WIDTH * (test[0]), CASE_HEIGHT * test[1]);
-		usleep(4000);
+		usleep(8000);
 	}
 	return (0);
 }
 
 static void	make_change(t_data *data, int *dir)
 {
-	data->tab[data->player->xy[1]][data->player->xy[0]] = \
-	(char []){'0', 'E'}[data->player->xy[0] == data->exit[0] \
-	&& data->player->xy[1] == data->exit[1]];
-	if (data->tab[data->player->xy[1] + dir[1]] \
-	[data->player->xy[0] + dir[0]] == 'C')
+	int	x;
+	int	y;
+
+	if (data->player->xy[0] == data->exit[0] && data->player->xy[1] == data->exit[1])
+		data->tab[data->player->xy[1]][data->player->xy[0]] = 'E';
+	else
+		data->tab[data->player->xy[1]][data->player->xy[0]] = '0';
+	y = data->player->xy[1] + dir[1];
+	x = data->player->xy[0] + dir[0];
+	if (data->tab[y][x] == 'C')
 		data->c -= 1;
 	data->tab[data->player->xy[1] + dir[1]][data->player->xy[0] + dir[0]] = 'P';
 	data->player->xy[1] += dir[1];

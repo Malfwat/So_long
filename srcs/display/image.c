@@ -36,6 +36,9 @@ void	get_to_print(char **tab, t_data *data)
 
 void	display_frame(char **map, t_data *data, int i, int j)
 {
+	static int	test;
+
+	test = test % 35000;
 	if (map[i][j] == '0')
 		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
 		data->floor->img, CASE_WIDTH * j, CASE_HEIGHT * i);
@@ -50,7 +53,8 @@ void	display_frame(char **map, t_data *data, int i, int j)
 		data->out->img, CASE_WIDTH * j, CASE_HEIGHT * i);
 	if (map[i][j] == '2')
 		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->enemy->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+		data->move_buu[test / 5000]->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	test++;
 }
 
 void	draw(char **map, t_data *data, int *xy)

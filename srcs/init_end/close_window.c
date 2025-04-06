@@ -28,6 +28,25 @@ void	destroy_all_images(t_data *data)
 		mlx_destroy_image(data->mlx, data->move[3]->img);
 	if (data->move[4]->img)
 		mlx_destroy_image(data->mlx, data->move[4]->img);
+
+
+
+ 	if (data->move_buu[0]->img)
+		mlx_destroy_image(data->mlx, data->move_buu[0]->img);
+	if (data->move_buu[1]->img)
+		mlx_destroy_image(data->mlx, data->move_buu[1]->img);
+	if (data->move_buu[2]->img)
+		mlx_destroy_image(data->mlx, data->move_buu[2]->img);
+	if (data->move_buu[3]->img)
+		mlx_destroy_image(data->mlx, data->move_buu[3]->img);
+	if (data->move_buu[4]->img)
+		mlx_destroy_image(data->mlx, data->move_buu[4]->img);
+	if (data->move_buu[5]->img)
+		mlx_destroy_image(data->mlx, data->move_buu[5]->img);
+	if (data->move_buu[6]->img)
+		mlx_destroy_image(data->mlx, data->move_buu[6]->img);
+ 
+
 	if (data->out->img)
 		mlx_destroy_image(data->mlx, data->out->img);
 	if (data->wall->img)
