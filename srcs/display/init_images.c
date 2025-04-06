@@ -29,6 +29,7 @@ int	check_malloc(t_data *data)
 	|| !data->move_buu[4]->img \
 	|| !data->move_buu[5]->img \
 	|| !data->move_buu[6]->img \
+	|| !data->move_buu[7]->img \
 	|| !data->floor->img \
 	|| !data->out->img \
 	|| !data->collectible->img \
@@ -61,18 +62,20 @@ void	init_move_buu(t_data *data)
 	int	y;
 
 	data->move_buu[0]->img = mlx_xpm_file_to_image \
-	(data->mlx, "dbz/buu_move/0.xpm", &x, &y);
+	(data->mlx, "dbz/buu_move/buu.xpm", &x, &y);
 	data->move_buu[1]->img = mlx_xpm_file_to_image \
-	(data->mlx, "dbz/buu_move/1.xpm", &x, &y);
+	(data->mlx, "dbz/buu_move/0.xpm", &x, &y);
 	data->move_buu[2]->img = mlx_xpm_file_to_image \
-	(data->mlx, "dbz/buu_move/2.xpm", &x, &y);
+	(data->mlx, "dbz/buu_move/1.xpm", &x, &y);
 	data->move_buu[3]->img = mlx_xpm_file_to_image \
-	(data->mlx, "dbz/buu_move/3.xpm", &x, &y);
+	(data->mlx, "dbz/buu_move/2.xpm", &x, &y);
 	data->move_buu[4]->img = mlx_xpm_file_to_image \
-	(data->mlx, "dbz/buu_move/4.xpm", &x, &y);
+	(data->mlx, "dbz/buu_move/3.xpm", &x, &y);
 	data->move_buu[5]->img = mlx_xpm_file_to_image \
-	(data->mlx, "dbz/buu_move/5.xpm", &x, &y);
+	(data->mlx, "dbz/buu_move/4.xpm", &x, &y);
 	data->move_buu[6]->img = mlx_xpm_file_to_image \
+	(data->mlx, "dbz/buu_move/5.xpm", &x, &y);
+	data->move_buu[7]->img = mlx_xpm_file_to_image \
 	(data->mlx, "dbz/buu_move/6.xpm", &x, &y);
 
 }
@@ -102,7 +105,5 @@ int	init_data(t_data *data)
 	(data->mlx, "dbz/wall.xpm", &tmp, &tmp);
 	data->player->img = mlx_xpm_file_to_image \
 	(data->mlx, "dbz/stand.xpm", &tmp, &tmp);
-	data->enemy->img = mlx_xpm_file_to_image \
-	(data->mlx, "dbz/buu.xpm", &tmp, &tmp);
 	return (check_malloc(data));
 }

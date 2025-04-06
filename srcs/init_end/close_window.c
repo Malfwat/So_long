@@ -45,6 +45,8 @@ void	destroy_all_images(t_data *data)
 		mlx_destroy_image(data->mlx, data->move_buu[5]->img);
 	if (data->move_buu[6]->img)
 		mlx_destroy_image(data->mlx, data->move_buu[6]->img);
+	if (data->move_buu[7]->img)
+		mlx_destroy_image(data->mlx, data->move_buu[7]->img);
  
 
 	if (data->out->img)
@@ -57,8 +59,6 @@ void	destroy_all_images(t_data *data)
 		mlx_destroy_image(data->mlx, data->floor->img);
 	if (data->player->img)
 		mlx_destroy_image(data->mlx, data->player->img);
-	if (data->enemy->img)
-		mlx_destroy_image(data->mlx, data->enemy->img);
 }
 
 int	close_n_free_win(t_data *data)

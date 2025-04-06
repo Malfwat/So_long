@@ -101,7 +101,7 @@ static void	make_change(t_data *data, int *dir)
 
 void	move_player(t_data *data, int *dir)
 {
-	char	*str;
+	// char	*str;
 
 	if (!data->tab[data->player->xy[1] + dir[1]] \
 	|| data->tab[data->player->xy[1] + dir[1]] \
@@ -118,6 +118,35 @@ void	move_player(t_data *data, int *dir)
 	make_change(data, dir);
 	print_move2(data);
 	print_game(data);
+/* 	str = ft_itoa(data->count_move);
+	if (str == NULL)
+		close_n_free_win(data);
+	mlx_string_put(data->mlx, data->mlx->win_list, 15, 20, 0x00FFFFFF, str);
+	free(str); */
+}
+
+void	display_frame(char **map, t_data *data, int i, int j)
+{
+	static int	test;
+	char		*str;
+
+	test = test % 40000;
+	if (map[i][j] == '0')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->floor->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	if (map[i][j] == '1')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->wall->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	if (map[i][j] == 'C')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->collectible->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	if (map[i][j] == 'E')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->out->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	if (map[i][j] == '2')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->move_buu[test / NB_FRAME]->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	test++;
 	str = ft_itoa(data->count_move);
 	if (str == NULL)
 		close_n_free_win(data);

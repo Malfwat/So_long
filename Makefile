@@ -151,7 +151,7 @@ $(NAME):	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_M) $(LIBFT_A) $(LIB_MLX)
 	$(CC) $(OBJ) $(OBJ_M) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
 bonus:	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_B) $(LIBFT_A) $(LIB_MLX)
-	$(CC) $(OBJ) $(OBJ_B) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
+	$(CC) $(OBJ) $(OBJ_B) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT) -D NB_FRAME=5000
 	
 clean:
 	@make clean -C minilibx-linux/

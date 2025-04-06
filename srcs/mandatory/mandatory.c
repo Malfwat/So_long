@@ -13,6 +13,7 @@
 #include <so_long.h>
 #include <map.h>
 #include <libft.h>
+#include <mlx.h>
 
 void	move_player(t_data *data, int *dir)
 {
@@ -66,4 +67,27 @@ bool	is_good_content(char **tab, int width, int height, t_data *data)
 	if (char_in_tab[P] != 1 || char_in_tab[E] != 1 || char_in_tab[C] == 0)
 		return (false);
 	return (true);
+}
+
+void	display_frame(char **map, t_data *data, int i, int j)
+{
+	static int	test;
+
+	test = test % 40000;
+	if (map[i][j] == '0')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->floor->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	if (map[i][j] == '1')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->wall->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	if (map[i][j] == 'C')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->collectible->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	if (map[i][j] == 'E')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->out->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	if (map[i][j] == '2')
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
+		data->move_buu[0]->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	test++;
 }

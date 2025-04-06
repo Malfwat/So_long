@@ -32,6 +32,15 @@
 # include <stdbool.h>
 # include <mlx_int.h>
 
+# ifndef NB_FRAME
+# 	define NB_FRAME 5000
+# endif /* NB_FRAME */
+
+# define RIGHT 65363
+# define LEFT 65361
+# define UP 65362
+# define DOWN 65364
+
 typedef struct s_image
 {
 	void	*img;
@@ -49,10 +58,10 @@ typedef struct s_data
 	t_image	out[1];
 	t_image	collectible[1];
 	t_image	move[6][1];
-	t_image	move_buu[8][1];
+	t_image	move_buu[9][1];
 	t_image	wall[1];
 	t_image	player[1];
-	t_image	enemy[1];
+	// t_image	enemy[1];
 	int		w_height;
 	int		w_width;
 	int		count_move;
@@ -73,5 +82,6 @@ int		manage_hook(int keycode, t_data *data);
 void	get_to_print(char **tab, t_data *data);
 void	set_hook(t_data *data);
 int		print_game(t_data *data);
+void	display_frame(char **map, t_data *data, int i, int j);
 
 #endif /*SO_LONG_H*/
