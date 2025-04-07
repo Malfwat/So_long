@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+         #
+#    By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 09:55:07 by amouflet          #+#    #+#              #
-#    Updated: 2023/02/02 14:38:54 by amouflet         ###   ########.fr        #
+#    Updated: 2025/04/07 02:03:19 by malfwa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	so_long
+NAME		=	so_long
+NAME_BONUS	=	so_long_bonus
 
 ################################################################################
 #                                                                              #
@@ -37,7 +38,8 @@ HOOK	=	manage_hook.c
 
 M		=	mandatory.c
 
-B		=	bonus.c
+B		=	bonus.c \
+			bonus2.c
 
 ################################################################################
 #                                                                              #
@@ -151,7 +153,7 @@ $(NAME):	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_M) $(LIBFT_A) $(LIB_MLX)
 	$(CC) $(OBJ) $(OBJ_M) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
 bonus:	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_B) $(LIBFT_A) $(LIB_MLX)
-	$(CC) $(OBJ) $(OBJ_B) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT) -D NB_FRAME=5000
+	$(CC) $(OBJ) $(OBJ_B) -o $(NAME_BONUS) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
 clean:
 	@make clean -C minilibx-linux/
@@ -162,6 +164,7 @@ clean:
 fclean:	clean
 	@make fclean -C libft/
 	rm -f $(NAME)
+	rm -f $(NAME_BONUS)
 
 re: fclean all
 

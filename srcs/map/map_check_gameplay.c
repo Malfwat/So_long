@@ -103,7 +103,7 @@ bool	check_gameplay(char **map)
 	{
 		j = 0;
 		while (map_dup[i][j])
-		{	
+		{
 			if (map_dup[i][j] != '1' && map_dup[i][j] != '0')
 				exit_value = false;
 			j++;

@@ -33,7 +33,7 @@
 # include <mlx_int.h>
 
 # ifndef NB_FRAME
-# 	define NB_FRAME 5000
+#  define NB_FRAME 5000
 # endif /* NB_FRAME */
 
 # define RIGHT 65363
@@ -70,7 +70,7 @@ typedef struct s_data
 	char	**tab;
 	char	**to_print;
 	int		xy[2];
-}t_data;
+}	t_data;
 
 void	get_player_pos(char **map, int *pos, char c);
 int		init_data(t_data *data);

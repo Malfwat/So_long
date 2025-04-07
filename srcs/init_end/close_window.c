@@ -16,22 +16,9 @@
 #include <stdlib.h>
 #include <libft.h>
 
-void	destroy_all_images(t_data *data)
+void	destroy_buu(t_data *data)
 {
-	if (data->move[0]->img)
-		mlx_destroy_image(data->mlx, data->move[0]->img);
-	if (data->move[1]->img)
-		mlx_destroy_image(data->mlx, data->move[1]->img);
-	if (data->move[2]->img)
-		mlx_destroy_image(data->mlx, data->move[2]->img);
-	if (data->move[3]->img)
-		mlx_destroy_image(data->mlx, data->move[3]->img);
-	if (data->move[4]->img)
-		mlx_destroy_image(data->mlx, data->move[4]->img);
-
-
-
- 	if (data->move_buu[0]->img)
+	if (data->move_buu[0]->img)
 		mlx_destroy_image(data->mlx, data->move_buu[0]->img);
 	if (data->move_buu[1]->img)
 		mlx_destroy_image(data->mlx, data->move_buu[1]->img);
@@ -47,8 +34,21 @@ void	destroy_all_images(t_data *data)
 		mlx_destroy_image(data->mlx, data->move_buu[6]->img);
 	if (data->move_buu[7]->img)
 		mlx_destroy_image(data->mlx, data->move_buu[7]->img);
- 
+}
 
+void	destroy_all_images(t_data *data)
+{
+	destroy_buu(data);
+	if (data->move[0]->img)
+		mlx_destroy_image(data->mlx, data->move[0]->img);
+	if (data->move[1]->img)
+		mlx_destroy_image(data->mlx, data->move[1]->img);
+	if (data->move[2]->img)
+		mlx_destroy_image(data->mlx, data->move[2]->img);
+	if (data->move[3]->img)
+		mlx_destroy_image(data->mlx, data->move[3]->img);
+	if (data->move[4]->img)
+		mlx_destroy_image(data->mlx, data->move[4]->img);
 	if (data->out->img)
 		mlx_destroy_image(data->mlx, data->out->img);
 	if (data->wall->img)

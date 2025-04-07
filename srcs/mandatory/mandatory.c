@@ -50,7 +50,7 @@ bool	is_good_content(char **tab, int width, int height, t_data *data)
 	{
 		width = -1;
 		while (tab[height][++width])
-		{	
+		{
 			if (is_map_char(tab[height][width], CHAR_SET_M) == false)
 				return (false);
 			if (tab[height][width] == 'P')

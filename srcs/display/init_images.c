@@ -55,7 +55,7 @@ void	init_move(t_data *data)
 	data->move[4]->img = mlx_xpm_file_to_image \
 	(data->mlx, "dbz/move/4.xpm", &x, &y);
 }
- 
+
 void	init_move_buu(t_data *data)
 {
 	int	x;
@@ -77,9 +77,8 @@ void	init_move_buu(t_data *data)
 	(data->mlx, "dbz/buu_move/5.xpm", &x, &y);
 	data->move_buu[7]->img = mlx_xpm_file_to_image \
 	(data->mlx, "dbz/buu_move/6.xpm", &x, &y);
-
 }
- 
+
 int	init_data(t_data *data)
 {
 	int	tmp;

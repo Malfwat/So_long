@@ -30,14 +30,14 @@ typedef struct s_map
 	int				len;
 	struct s_map	*final_line;
 	struct s_map	*next;
-}t_map;
+}					t_map;
 
 typedef enum e_char
 {
 	P,
 	E,
 	C	
-}t_char_in_map;
+}	t_char_in_map;
 
 // map_lst.c
 
