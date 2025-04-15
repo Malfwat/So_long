@@ -34,8 +34,12 @@ void	get_to_print(char **tab, t_data *data)
 		data->to_print[i++] = &tab[y++][x];
 }
 
-void	display_frame(char **map, t_data *data, int i, int j)
+/* void	display_frame(char **map, t_data *data, int i, int j)
 {
+	static int	test;
+	char		*str;
+
+	test = test % 40000;
 	if (map[i][j] == '0')
 		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
 		data->floor->img, CASE_WIDTH * j, CASE_HEIGHT * i);
@@ -50,20 +54,27 @@ void	display_frame(char **map, t_data *data, int i, int j)
 		data->out->img, CASE_WIDTH * j, CASE_HEIGHT * i);
 	if (map[i][j] == '2')
 		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->enemy->img, CASE_WIDTH * j, CASE_HEIGHT * i);
-}
+		data->move_buu[test / NB_FRAME]->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+	test++;
+	str = ft_itoa(data->count_move);
+	if (str == NULL)
+		close_n_free_win(data);
+	mlx_string_put(data->mlx, data->mlx->win_list, 15, 20, 0x00FFFFFF, str);
+	free(str);
+} */
 
 void	draw(char **map, t_data *data, int *xy)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
-	i = -1;
-	while (++i < xy[1] && i < data->w_height && map[i])
+	i = 0;
+	while (i < xy[1] && i < data->w_height && map[i])
 	{
-		j = -1;
-		while (++j < xy[0] && j < data->w_width && map[i][j])
-			display_frame(map, data, i, j);
+		j = 0;
+		while (j < xy[0] && j < data->w_width && map[i][j])
+			display_frame(map, data, i, j++);
+		i++;
 	}
 }
 

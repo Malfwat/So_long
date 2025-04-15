@@ -1,0 +1,1 @@
+.build/ft_memchr.o: srcs/ft_memchr.c

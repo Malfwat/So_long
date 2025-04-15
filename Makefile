@@ -105,6 +105,13 @@ DIRS	+=	$(addprefix $(BUILD), $(HOOK_DIR))
 DIRS	+=	$(addprefix $(BUILD), $(DISPLAY_DIR))
 
 
+PATTERN := /dev/input/by-id/*event-joystick
+
+
+MANETTE := $(shell m=$$(readlink -f $(PATTERN) | tail -1); \
+	if echo $$m | grep -q "event-joystick"; then echo ""; else echo $$m; fi)
+ 
+
 ################################################################################
 #                                                                              #
 #                                                                              #
@@ -137,7 +144,7 @@ $(addprefix $(BUILD), $(B_DIR)):
 	@mkdir $@
 
 $(BUILD)%.o:	$(SRC_DIR)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCL)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCL) -D MANETTE=\"$(MANETTE)\"
 
 $(LIBFT_A):	mlibft
 

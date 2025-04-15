@@ -30,13 +30,13 @@ int	manage_hook(int keycode, t_data *data)
 		keycode = ESC;
 	if (keycode == ESC)
 		close_n_free_win(data);
-	if (keycode == 'd')
+	if (keycode == 'd' || keycode == RIGHT)
 		move_player(data, (int []){1, 0});
-	if (keycode == 'a')
+	if (keycode == 'a' || keycode == LEFT)
 		move_player(data, (int []){-1, 0});
-	if (keycode == 'w')
+	if (keycode == 'w' || keycode == UP)
 		move_player(data, (int []){0, -1});
-	if (keycode == 's')
+	if (keycode == 's' || keycode == DOWN)
 		move_player(data, (int []){0, 1});
 	if (data->c == 0 && data->player->xy[0] == data->exit[0] \
 	&& data->player->xy[1] == data->exit[1])
