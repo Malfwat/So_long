@@ -6,7 +6,7 @@
 #    By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 09:55:07 by amouflet          #+#    #+#              #
-#    Updated: 2025/04/07 02:03:19 by malfwa           ###   ########.fr        #
+#    Updated: 2025/04/24 13:58:51 by admoufle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -153,17 +153,21 @@ mlibft:
 
 $(LIB_MLX):	mlibmlx
 
-mlibmlx:
+minilibx-linux/:
+	wget https://cdn.intra.42.fr/document/document/31497/minilibx-linux.tgz
+	tar -xf minilibx-linux.tgz
+
+mlibmlx: minilibx-linux/
 	@make -C minilibx-linux/
 
-$(NAME):	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_M) $(LIBFT_A) $(LIB_MLX)
+$(NAME):	$(LIB_MLX) Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_M) $(LIBFT_A) 
 	$(CC) $(OBJ) $(OBJ_M) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
 bonus:	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_B) $(LIBFT_A) $(LIB_MLX)
 	$(CC) $(OBJ) $(OBJ_B) -o $(NAME_BONUS) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
-clean:
-	@make clean -C minilibx-linux/
+clean: minilibx-linux/
+	@make  clean -C minilibx-linux/
 	@make clean -C libft/
 	@rm -rf $(BUILD)
 	@rm -f $(LIBS)
