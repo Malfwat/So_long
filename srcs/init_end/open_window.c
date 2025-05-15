@@ -30,13 +30,13 @@ int	main(int ac, char **av)
 		return (close_n_free_win(data));
 	init_data(data);
 	data->mlx->win_list = mlx_new_window(data->mlx, CASE_WIDTH * data->w_width, \
-	CASE_HEIGHT * data->w_height, "So_long");
+									  CASE_HEIGHT * data->w_height, "So_long");
 	get_player_pos(data->tab, data->player->xy, 'P');
 	get_to_print(data->tab, data);
 	draw(data->to_print, data, data->xy);
 	get_player_pos(data->to_print, pos, 'P');
 	mlx_put_image_to_window(data->mlx, data->mlx->win_list, data->player->img, \
-	CASE_WIDTH * pos[0], CASE_HEIGHT * pos[1]);
+						 CASE_WIDTH * pos[0], CASE_HEIGHT * pos[1]);
 	set_hook(data);
 	mlx_loop(data->mlx);
 }

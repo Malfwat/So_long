@@ -108,7 +108,7 @@ DIRS	+=	$(addprefix $(BUILD), $(DISPLAY_DIR))
 PATTERN := /dev/input/by-id/*event-joystick
 
 
-MANETTE := $(shell m=$$(readlink -f $(PATTERN) | tail -1); \
+CONTROLLER := $(shell m=$$(readlink -f $(PATTERN) | tail -1); \
 	if echo $$m | grep -q "event-joystick"; then echo ""; else echo $$m; fi)
  
 
@@ -144,7 +144,7 @@ $(addprefix $(BUILD), $(B_DIR)):
 	@mkdir $@
 
 $(BUILD)%.o:	$(SRC_DIR)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCL) -D MANETTE=\"$(MANETTE)\"
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCL) -D CONTROLLER=\"$(CONTROLLER)\"
 
 $(LIBFT_A):	mlibft
 
@@ -154,7 +154,7 @@ mlibft:
 $(LIB_MLX):	mlibmlx
 
 minilibx-linux/:
-	wget https://cdn.intra.42.fr/document/document/31497/minilibx-linux.tgz
+	wget https://cdn.intra.42.fr/document/document/32675/minilibx-linux.tgz
 	tar -xf minilibx-linux.tgz
 
 mlibmlx: minilibx-linux/

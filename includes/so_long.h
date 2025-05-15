@@ -61,7 +61,6 @@ typedef struct s_data
 	t_image	move_buu[9][1];
 	t_image	wall[1];
 	t_image	player[1];
-	// t_image	enemy[1];
 	int		w_height;
 	int		w_width;
 	int		count_move;
