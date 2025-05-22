@@ -33,7 +33,7 @@
 # include <mlx_int.h>
 
 # ifndef NB_FRAME
-#  define NB_FRAME 5000
+#  define NB_FRAME 50000
 # endif /* NB_FRAME */
 
 # define RIGHT 65363

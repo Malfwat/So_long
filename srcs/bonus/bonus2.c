@@ -20,7 +20,7 @@ void	display_frame(char **map, t_data *data, int i, int j)
 	static int	test;
 	char		*str;
 
-	test = test % 40000;
+	test = test % 400000;
 	if (map[i][j] == '0')
 		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
 		data->floor->img, CASE_WIDTH * j, CASE_HEIGHT * i);
