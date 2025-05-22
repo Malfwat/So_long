@@ -35,35 +35,6 @@ void	get_to_print(char **tab, t_data *data)
 		data->to_print[i++] = &tab[y++][x];
 }
 
-/* void	display_frame(char **map, t_data *data, int i, int j)
-{
-	static int	test;
-	char		*str;
-
-	test = test % 40000;
-	if (map[i][j] == '0')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->floor->img, CASE_WIDTH * j, CASE_HEIGHT * i);
-	if (map[i][j] == '1')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->wall->img, CASE_WIDTH * j, CASE_HEIGHT * i);
-	if (map[i][j] == 'C')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->collectible->img, CASE_WIDTH * j, CASE_HEIGHT * i);
-	if (map[i][j] == 'E')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->out->img, CASE_WIDTH * j, CASE_HEIGHT * i);
-	if (map[i][j] == '2')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->move_buu[test / NB_FRAME]->img, CASE_WIDTH * j, CASE_HEIGHT * i);
-	test++;
-	str = ft_itoa(data->count_move);
-	if (str == NULL)
-		close_n_free_win(data);
-	mlx_string_put(data->mlx, data->mlx->win_list, 15, 20, 0x00FFFFFF, str);
-	free(str);
-} */
-
 void	draw(char **map, t_data *data, int *xy)
 {
 	int		i;
@@ -79,19 +50,18 @@ void	draw(char **map, t_data *data, int *xy)
 	}
 }
 
-
-ssize_t test_manette(t_data *data, struct input_event *ev)
+ssize_t test_controller(t_data *data, struct input_event *ev)
 {
 	static int	test_fd;
 
 	if (!test_fd)
-		test_fd = open(MANETTE, O_RDONLY | O_NONBLOCK);
+		test_fd = open(CONTROLLER, O_RDONLY | O_NONBLOCK);
 
 	(void)data;
 	return (read(test_fd, ev, sizeof(*ev)));
 }
 
-void    manette_move(struct input_event ev, t_data *data)
+void    controller_move(struct input_event ev, t_data *data)
 {
 	if (ev.type == EV_ABS) 
 	{
@@ -120,9 +90,9 @@ int	print_game(t_data *data)
 
 
 	ft_memset(&ev, 0, sizeof(ev));
-	n = test_manette(data, &ev);
+	n = test_controller(data, &ev);
 	if (n == (ssize_t)sizeof(ev))
-		manette_move(ev, data);
+		controller_move(ev, data);
 	get_to_print(data->tab, data);
 	get_player_pos(data->to_print, test, 'P');
 	draw(data->to_print, data, data->xy);
