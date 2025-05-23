@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:40:45 by amouflet          #+#    #+#             */
-/*   Updated: 2023/01/31 16:52:36 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:57:48 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	manage_hook(int keycode, t_data *data)
 		move_player(data, (int []){0, -1});
 	if (keycode == 's' || keycode == DOWN)
 		move_player(data, (int []){0, 1});
-	if (data->c == 0 && data->player->xy[0] == data->exit[0] \
-	&& data->player->xy[1] == data->exit[1])
+	if (data->c == 0 && data->player->xy[0] == data->exit[0]
+		&& data->player->xy[1] == data->exit[1])
 	{
 		ft_putendl_fd("You Win!", 1);
 		close_n_free_win(data);

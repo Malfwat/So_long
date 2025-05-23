@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:21:11 by amouflet          #+#    #+#             */
-/*   Updated: 2025/04/07 02:00:03 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/05/23 17:12:28 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	print_move1(t_data *data)
 	while (i < 5)
 	{
 		draw(data->to_print, data, data->xy);
-		mlx_put_image_to_window \
-		(data->mlx, data->mlx->win_list, data->move[i]->img, \
-		CASE_WIDTH * (test[0]), CASE_HEIGHT * test[1]);
+		mlx_put_image_to_window(data->mlx,
+			data->mlx->win_list, data->move[i]->img,
+			CASE_WIDTH * (test[0]), CASE_HEIGHT * test[1]);
 		usleep(8000);
 		i++;
 	}
@@ -73,9 +73,9 @@ int	print_move2(t_data *data)
 	while (--i > 0)
 	{
 		draw(data->to_print, data, data->xy);
-		mlx_put_image_to_window \
-		(data->mlx, data->mlx->win_list, data->move[i]->img, \
-		CASE_WIDTH * (test[0]), CASE_HEIGHT * test[1]);
+		mlx_put_image_to_window(data->mlx,
+			data->mlx->win_list, data->move[i]->img,
+			CASE_WIDTH * (test[0]), CASE_HEIGHT * test[1]);
 		usleep(8000);
 	}
 	return (0);
@@ -86,7 +86,7 @@ static void	make_change(t_data *data, int *dir)
 	int	x;
 	int	y;
 
-	if (data->player->xy[0] == data->exit[0] \
+	if (data->player->xy[0] == data->exit[0]
 		&& data->player->xy[1] == data->exit[1])
 		data->tab[data->player->xy[1]][data->player->xy[0]] = 'E';
 	else
@@ -102,14 +102,14 @@ static void	make_change(t_data *data, int *dir)
 
 void	move_player(t_data *data, int *dir)
 {
-	if (!data->tab[data->player->xy[1] + dir[1]] \
-	|| data->tab[data->player->xy[1] + dir[1]] \
-	[data->player->xy[0] + dir[0]] == '1')
+	if (!data->tab[data->player->xy[1] + dir[1]]
+		|| data->tab[data->player->xy[1] + dir[1]]
+		[data->player->xy[0] + dir[0]] == '1')
 		return ;
 	data->count_move += 1;
 	print_move1(data);
-	if (data->tab[data->player->xy[1] + dir[1]] \
-	[data->player->xy[0] + dir[0]] == '2')
+	if (data->tab[data->player->xy[1] + dir[1]]
+		[data->player->xy[0] + dir[0]] == '2')
 	{
 		ft_putendl_fd("You lose!", 1);
 		close_n_free_win(data);

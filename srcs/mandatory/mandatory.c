@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:15:04 by amouflet          #+#    #+#             */
-/*   Updated: 2023/01/31 16:54:36 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:54:52 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	move_player(t_data *data, int *dir)
 {
 	char	*str;
 
-	if (!data->tab[data->player->xy[1] + dir[1]] \
-	|| data->tab[data->player->xy[1] + dir[1]] \
-	[data->player->xy[0] + dir[0]] == '1')
+	if (!data->tab[data->player->xy[1] + dir[1]]
+		|| data->tab[data->player->xy[1] + dir[1]]
+		[data->player->xy[0] + dir[0]] == '1')
 		return ;
 	data->count_move += 1;
 	str = ft_itoa(data->count_move);
@@ -30,11 +30,11 @@ void	move_player(t_data *data, int *dir)
 	ft_putstr_fd("Number of move: ", 1);
 	ft_putendl_fd(str, 1);
 	free(str);
-	data->tab[data->player->xy[1]][data->player->xy[0]] = (char []){'0', 'E'} \
-	[data->player->xy[0] == data->exit[0] \
-	&& data->player->xy[1] == data->exit[1]];
-	if (data->tab[data->player->xy[1] + dir[1]] \
-	[data->player->xy[0] + dir[0]] == 'C')
+	data->tab[data->player->xy[1]][data->player->xy[0]] = (char []){'0', 'E'}
+	[data->player->xy[0] == data->exit[0]
+		&& data->player->xy[1] == data->exit[1]];
+	if (data->tab[data->player->xy[1] + dir[1]]
+		[data->player->xy[0] + dir[0]] == 'C')
 		data->c -= 1;
 	data->tab[data->player->xy[1] + dir[1]][data->player->xy[0] + dir[0]] = 'P';
 	data->player->xy[1] += dir[1];
@@ -75,19 +75,19 @@ void	display_frame(char **map, t_data *data, int i, int j)
 
 	test = test % 40000;
 	if (map[i][j] == '0')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->floor->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list,
+			data->floor->img, CASE_WIDTH * j, CASE_HEIGHT * i);
 	if (map[i][j] == '1')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->wall->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list,
+			data->wall->img, CASE_WIDTH * j, CASE_HEIGHT * i);
 	if (map[i][j] == 'C')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->collectible->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list,
+			data->collectible->img, CASE_WIDTH * j, CASE_HEIGHT * i);
 	if (map[i][j] == 'E')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->out->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list,
+			data->out->img, CASE_WIDTH * j, CASE_HEIGHT * i);
 	if (map[i][j] == '2')
-		mlx_put_image_to_window(data->mlx, data->mlx->win_list, \
-		data->move_buu[0]->img, CASE_WIDTH * j, CASE_HEIGHT * i);
+		mlx_put_image_to_window(data->mlx, data->mlx->win_list,
+			data->move_buu[0]->img, CASE_WIDTH * j, CASE_HEIGHT * i);
 	test++;
 }

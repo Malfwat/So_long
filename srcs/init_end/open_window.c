@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 21:29:37 by amouflet          #+#    #+#             */
-/*   Updated: 2023/01/31 15:54:32 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:58:50 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int	main(int ac, char **av)
 	if (get_map(av[1], data, data->xy) == -1)
 		return (close_n_free_win(data));
 	init_data(data);
-	data->mlx->win_list = mlx_new_window(data->mlx, CASE_WIDTH * data->w_width, \
-									  CASE_HEIGHT * data->w_height, "So_long");
+	data->mlx->win_list = mlx_new_window(data->mlx, CASE_WIDTH * data->w_width,
+			CASE_HEIGHT * data->w_height, "So_long");
 	get_player_pos(data->tab, data->player->xy, 'P');
 	get_to_print(data->tab, data);
 	draw(data->to_print, data, data->xy);
 	get_player_pos(data->to_print, pos, 'P');
-	mlx_put_image_to_window(data->mlx, data->mlx->win_list, data->player->img, \
-						 CASE_WIDTH * pos[0], CASE_HEIGHT * pos[1]);
+	mlx_put_image_to_window(data->mlx, data->mlx->win_list, data->player->img,
+		CASE_WIDTH * pos[0], CASE_HEIGHT * pos[1]);
 	set_hook(data);
 	mlx_loop(data->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:55:34 by amouflet          #+#    #+#             */
-/*   Updated: 2023/01/31 16:53:10 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 17:02:24 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	get_to_print(char **tab, t_data *data)
 	int	i;
 
 	i = 0;
-	y = (int []){0, data->player->xy[1] - data->w_height / 2} \
+	y = (int []){0, data->player->xy[1] - data->w_height / 2}
 	[data->player->xy[1] > data->w_height / 2];
-	x = (int []){0, data->player->xy[0] - data->w_width / 2} \
+	x = (int []){0, data->player->xy[0] - data->w_width / 2}
 	[(data->player->xy[0] > data->w_width / 2)];
 	if (x + data->w_width > data->xy[0])
 		x = data->xy[0] - data->w_width;
@@ -50,20 +50,19 @@ void	draw(char **map, t_data *data, int *xy)
 	}
 }
 
-ssize_t test_controller(t_data *data, struct input_event *ev)
+ssize_t	test_controller(t_data *data, struct input_event *ev)
 {
 	static int	test_fd;
 
 	if (!test_fd)
 		test_fd = open(CONTROLLER, O_RDONLY | O_NONBLOCK);
-
 	(void)data;
 	return (read(test_fd, ev, sizeof(*ev)));
 }
 
-void    controller_move(struct input_event ev, t_data *data)
+void	controller_move(struct input_event ev, t_data *data)
 {
-	if (ev.type == EV_ABS) 
+	if (ev.type == EV_ABS)
 	{
 		if (ev.code == 16)
 		{
@@ -84,19 +83,18 @@ void    controller_move(struct input_event ev, t_data *data)
 
 int	print_game(t_data *data)
 {
-	int	test[2];
-	struct input_event ev;
-	ssize_t	n;
-
+	int					test[2];
+	struct input_event	ev;
+	ssize_t				n;
 
 	ft_memset(&ev, 0, sizeof(ev));
 	n = test_controller(data, &ev);
-	if (n == (ssize_t)sizeof(ev))
+	if (n == (ssize_t) sizeof(ev))
 		controller_move(ev, data);
 	get_to_print(data->tab, data);
 	get_player_pos(data->to_print, test, 'P');
 	draw(data->to_print, data, data->xy);
-	mlx_put_image_to_window(data->mlx, data->mlx->win_list, data->player->img, \
-	CASE_WIDTH * (test[0]), CASE_HEIGHT * test[1]);
+	mlx_put_image_to_window(data->mlx, data->mlx->win_list, data->player->img,
+		CASE_WIDTH * (test[0]), CASE_HEIGHT * test[1]);
 	return (0);
 }

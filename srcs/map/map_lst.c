@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:35:57 by amouflet          #+#    #+#             */
-/*   Updated: 2023/01/31 19:39:49 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:50:13 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ static int	add_line_in_map(t_map **map, char *line)
 		(*map)->final_line->next = new;
 		(*map)->final_line = (*map)->final_line->next;
 		if ((*map)->len != new->len)
-			return (free_map_in_lst(*map, NULL), \
-			ft_putendl_fd("The map isn't rectangle!", 2), 1);
+			return (free_map_in_lst(*map, NULL),
+				ft_putendl_fd("The map isn't rectangle!", 2), 1);
 	}
 	else
 	{

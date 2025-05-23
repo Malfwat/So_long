@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:53:30 by amouflet          #+#    #+#             */
-/*   Updated: 2023/01/31 19:47:57 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:49:41 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,17 @@ int	get_map(const char *map_path, t_data *data, int *xy)
 		return (ft_putendl_fd("Isn't a .ber file!", 2), -1);
 	map_lst = get_map_list(map_path);
 	if (!map_lst)
-		return (free_map_in_lst(map_lst, NULL), \
-		ft_putendl_fd("The map is empty!", 2), -1);
+		return (free_map_in_lst(map_lst, NULL),
+			ft_putendl_fd("The map is empty!", 2), -1);
 	tab = put_in_array(map_lst);
 	if (!tab)
 		return (free_map_in_lst(map_lst, NULL), -1);
 	if (is_good_format(tab, data) == false)
-		return (free_tab(tab), ft_putendl_fd \
-		("The map is not ok!", 2), -1);
+		return (free_tab(tab), ft_putendl_fd
+			("The map is not ok!", 2), -1);
 	if (check_gameplay(tab) == false)
-		return (free_tab(tab), ft_putendl_fd \
-		("The map is not solvable!", 2), -1);
+		return (free_tab(tab), ft_putendl_fd
+			("The map is not solvable!", 2), -1);
 	data->tab = tab;
 	tab_size(&xy[0], &xy[1], tab);
 	return (0);
