@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:31:11 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/15 11:16:35 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 17:59:36 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}t_list;
+}	t_list;
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

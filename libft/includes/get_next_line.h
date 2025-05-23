@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 22:19:30 by amouflet          #+#    #+#             */
-/*   Updated: 2023/01/25 19:20:29 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 17:59:26 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_stash
 {
 	char			*str;
 	struct s_stash	*next;
-}t_buf;
+}	t_buf;
 
 char	*get_next_line(int fd);
 char	*get_line(int fd, char *stash, char **line, t_buf *lst);

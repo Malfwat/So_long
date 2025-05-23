@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:46:01 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/17 13:22:34 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 17:59:53 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	x = find_len(s1) - 1;
 	i = 0;
 	while (ft_is_in_set(set, s1[i]) == 1)
-			i++;
+		i++;
 	if (s1[i] == 0)
 		return (ft_calloc(1, 1));
 	while (ft_is_in_set(set, s1[x]) == 1)
-			x--;
+		x--;
 	x -= i - 1;
 	str = malloc(sizeof(char) * (x + 1));
 	if (str == NULL)

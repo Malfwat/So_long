@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_gameplay.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 21:04:35 by amouflet          #+#    #+#             */
-/*   Updated: 2023/01/29 16:24:23 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/25 21:04:35 by admoufle          #+#    #+#             */
+/*   Updated: 2025/05/23 17:21:05 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ bool	check_gameplay(char **map)
 	while (map_dup[i])
 	{
 		j = 0;
-		while (map_dup[i][j])
+		while (map_dup[i][j] && exit_value)
 		{
 			if (map_dup[i][j] != '1' && map_dup[i][j] != '0')
 				exit_value = false;

@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:14:17 by amouflet          #+#    #+#             */
-/*   Updated: 2023/11/14 12:06:26 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/05/23 17:46:44 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@
 # include <mlx_int.h>
 
 # ifndef NB_FRAME
-#  define NB_FRAME 50000
+#  define NB_FRAME 98000
 # endif /* NB_FRAME */
+
+# define NB_IMG 14000
 
 # define RIGHT 65363
 # define LEFT 65361

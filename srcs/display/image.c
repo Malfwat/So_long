@@ -6,7 +6,7 @@
 /*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:55:34 by amouflet          #+#    #+#             */
-/*   Updated: 2025/05/23 17:02:24 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/05/23 17:20:43 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,47 +50,10 @@ void	draw(char **map, t_data *data, int *xy)
 	}
 }
 
-ssize_t	test_controller(t_data *data, struct input_event *ev)
-{
-	static int	test_fd;
-
-	if (!test_fd)
-		test_fd = open(CONTROLLER, O_RDONLY | O_NONBLOCK);
-	(void)data;
-	return (read(test_fd, ev, sizeof(*ev)));
-}
-
-void	controller_move(struct input_event ev, t_data *data)
-{
-	if (ev.type == EV_ABS)
-	{
-		if (ev.code == 16)
-		{
-			if (ev.value == -1)
-				manage_hook('a', data);
-			else if (ev.value == 1)
-				manage_hook('d', data);
-		}
-		else if (ev.code == 17)
-		{
-			if (ev.value == -1)
-				manage_hook('w', data);
-			else if (ev.value == 1)
-				manage_hook('s', data);
-		}
-	}
-}
-
 int	print_game(t_data *data)
 {
 	int					test[2];
-	struct input_event	ev;
-	ssize_t				n;
 
-	ft_memset(&ev, 0, sizeof(ev));
-	n = test_controller(data, &ev);
-	if (n == (ssize_t) sizeof(ev))
-		controller_move(ev, data);
 	get_to_print(data->tab, data);
 	get_player_pos(data->to_print, test, 'P');
 	draw(data->to_print, data, data->xy);
