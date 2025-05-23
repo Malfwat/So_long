@@ -21,7 +21,7 @@ void	set_hook(t_data *data)
 {
 	mlx_hook(data->mlx->win_list, X_CROSS, 0, close_n_free_win, data);
 	mlx_loop_hook(data->mlx, print_game, data);
-	mlx_key_hook(data->mlx->win_list, manage_hook, data);
+	mlx_hook(data->mlx->win_list, 2, (1L << 0), manage_hook, data);
 }
 
 int	manage_hook(int keycode, t_data *data)

@@ -97,21 +97,6 @@ INCL	=	-I./includes/
 INCL	+=	-I./libft/includes/
 INCL	+=	-I./minilibx-linux/
 
-DIRS	=	$(addprefix $(BUILD), $(INIT_END_DIR))
-DIRS	+=	$(addprefix $(BUILD), $(MAP_DIR))
-DIRS	+=	$(addprefix $(BUILD), $(M_DIR))
-DIRS	+=	$(addprefix $(BUILD), $(B_DIR))
-DIRS	+=	$(addprefix $(BUILD), $(HOOK_DIR))
-DIRS	+=	$(addprefix $(BUILD), $(DISPLAY_DIR))
-
-
-PATTERN := /dev/input/by-id/*event-joystick
-
-
-CONTROLLER := $(shell m=$$(readlink -f $(PATTERN) | tail -1); \
-	if echo $$m | grep -q "event-joystick"; then echo ""; else echo $$m; fi)
- 
-
 ################################################################################
 #                                                                              #
 #                                                                              #
@@ -122,28 +107,8 @@ CONTROLLER := $(shell m=$$(readlink -f $(PATTERN) | tail -1); \
 
 all:	$(NAME)
 
-$(BUILD):
-	@mkdir .build
-
-$(addprefix $(BUILD), $(MAP_DIR)):
-	@mkdir $@
-
-$(addprefix $(BUILD), $(INIT_END_DIR)):
-	@mkdir $@
-
-$(addprefix $(BUILD), $(DISPLAY_DIR)):
-	@mkdir $@
-
-$(addprefix $(BUILD), $(HOOK_DIR)):
-	@mkdir $@
-
-$(addprefix $(BUILD), $(M_DIR)):
-	@mkdir $@
-
-$(addprefix $(BUILD), $(B_DIR)):
-	@mkdir $@
-
 $(BUILD)%.o:	$(SRC_DIR)%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCL) -D CONTROLLER=\"$(CONTROLLER)\"
 
 $(LIBFT_A):	mlibft
@@ -151,19 +116,20 @@ $(LIBFT_A):	mlibft
 mlibft:
 	@make -C libft/
 
-$(LIB_MLX):	mlibmlx
+$(LIB_MLX):	minilibx-linux/
+	@make -C $<
 
 minilibx-linux/:
 	wget https://cdn.intra.42.fr/document/document/32675/minilibx-linux.tgz
 	tar -xf minilibx-linux.tgz
+#	cd $@ && ./
 
-mlibmlx: minilibx-linux/
-	@make -C minilibx-linux/
-
-$(NAME):	$(LIB_MLX) Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_M) $(LIBFT_A) 
+$(NAME):	$(LIB_MLX) Makefile $(OBJ) $(OBJ_M) $(LIBFT_A) 
 	$(CC) $(OBJ) $(OBJ_M) -o $(NAME) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
-bonus:	Makefile $(BUILD) $(DIRS) $(OBJ) $(OBJ_B) $(LIBFT_A) $(LIB_MLX)
+bonus:	$(NAME_BONUS)
+
+$(NAME_BONUS):	Makefile $(OBJ) $(OBJ_B) $(LIBFT_A) $(LIB_MLX)
 	$(CC) $(OBJ) $(OBJ_B) -o $(NAME_BONUS) -L./minilibx-linux/ $(LMLX) $(L) -L./libft/ $(LFT)
 	
 clean: minilibx-linux/
